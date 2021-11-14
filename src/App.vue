@@ -1,26 +1,43 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <NewChampion />
+    <ItemsChampion />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import NewChampion from './components/NewChampion';
+  import ItemsChampion from './components/ItemsChampion';
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'app',
+    components: {
+      NewChampion,
+      ItemsChampion
+    },
+    data: () => ({
+      champions: [{
+          name: 'Lux',
+          pseudo: 'the Light',
+          hp: 120,
+          mp: 890
+        },
+        {
+          name: 'Macho',
+          pseudo: 'the Strong',
+          hp: 690,
+          mp: 80
+        }
+      ]
+    }),
+    mounted: function () {
+      this.emitter.emit("champions-data", this.champions);
+    },
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scope>
+  #app {
+    padding: 20px;
+  }
 </style>
