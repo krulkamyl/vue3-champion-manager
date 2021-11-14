@@ -18,14 +18,16 @@
         this.champions = champions;
       });
     },
+    watch: {
+      champions(value) {
+        this.emitter.emit("champions-data", value);
+      }
+    },
     methods: {
       deleteItem: function (name) {
-        
-        let newChampionArr = this.champions.filter(function (champion) {
+         this.champions = this.champions.filter(function (champion) {
           return name.toLowerCase() !== champion.name.toLowerCase()
-        })
-
-        this.emitter.emit("champions-data", newChampionArr);
+        });
       }
     },
   }
