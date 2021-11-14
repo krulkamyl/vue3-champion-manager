@@ -58,7 +58,6 @@
       },
       addChampion: function() {
         this.champions.push({name: this.name, pseudo: this.nick, hp: this.maxHp, mp: this.maxMp});
-        this.emitter.emit("champions-data", this.champions);
         this.clearForm();
       }
     },
