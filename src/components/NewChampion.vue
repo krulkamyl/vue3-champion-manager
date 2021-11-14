@@ -70,7 +70,9 @@
             this.isReserved = true;
           }
         });
-        
+      },
+      champions(value) {
+        this.emitter.emit("champions-data", value);
       }
     },
     mounted() {
